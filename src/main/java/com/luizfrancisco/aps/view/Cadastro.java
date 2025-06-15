@@ -7,7 +7,9 @@ package com.luizfrancisco.aps.view;
 import com.luizfrancisco.aps.model.Usuario;
 import com.luizfrancisco.aps.util.ConfiguraCampos;
 import com.luizfrancisco.aps.util.ValidaCampos;
+import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -61,6 +63,7 @@ public class Cadastro extends javax.swing.JFrame {
         lblAvisoSenha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setFocusTraversalPolicyProvider(true);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -301,6 +304,17 @@ private boolean validacaoDosCampos(){
     if(valida.validaTextField(txtEmail, melhorEmail, lblAviso)) resultado = false;
     if(valida.validaTextField(txtNomeCompleto, firstName, lblAviso)) resultado = false;
     if(valida.validaPasswordField(psfSenha, senha, lblAvisoSenha)) resultado = false;
+    if(valida.validaPasswordField(psfConfirmarSenha, confirmarSenha, lblAviso)) resultado = false;
+    
+    if(!String.valueOf(psfSenha.getPassword()).equals(String.valueOf(psfConfirmarSenha.getPassword()))) {
+        psfConfirmarSenha.setBorder(new LineBorder(Color.RED, 2));
+        lblAvisoSenha.setText("Senhas não coincidem");
+        lblAvisoSenha.setForeground(Color.RED);
+        resultado = false;
+    }
+    
+    
+    
     
     
     return resultado;

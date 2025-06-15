@@ -38,6 +38,7 @@ public class ValidaCampos {
             campo.setBorder(new LineBorder(Color.GRAY, 1));
             aviso.setText("");
             return false;     
-    }
+        }
+        
     }
 }
